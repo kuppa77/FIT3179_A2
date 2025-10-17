@@ -1,0 +1,67 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"title": "Tourism Popularity by State",
+"width": 550,
+"height": 500,
+"data": {
+    "url": "../data/State_trips_nights.csv"
+},  
+"mark": "circle",
+"encoding": {
+    "x": {
+        "field": "Trips (000s)",
+        "type": "quantitative",
+        "title": "Number of Trips (000s)",
+        "axis": {
+            "tickCount":6
+        }
+    },
+    "y": {
+        "field": "Nights (000s)",
+        "type": "quantitative",
+        "title": "Number of Nights (000s)"
+    },
+    "size": {
+        "field": "Expenditure ($M)",
+        "type": "quantitative",
+        "scale": {"range": [50, 300]},
+        "title": "Expenditure ($M)",
+        "legend": {
+            "titleFontSize": 15.5,
+            "labelFontSize": 13.5
+        }
+    },
+    "color": {
+        "field": "State",
+        "type": "nominal",
+        "title": "State",
+        "legend": {
+            "titleFontSize": 15.5,
+            "labelFontSize": 13.5
+        }
+    },
+    "tooltip": [    
+      {"field": "State"},
+      {"field": "Trips (000s)", "format": ","},
+      {"field": "Nights (000s)", "format": ","},
+      {"field": "Expenditure ($M)", "format": ","}
+    ]
+},
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 20,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        }
+    }
+
+}

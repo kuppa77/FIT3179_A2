@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Australia Tourism 2025 Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="js/a2_vis.js"></script>
+
+</head>
+<body>
+    <h1>Tourism in Australia in 2025 </h1>
+    <h2 class = "subtitle"> Context, Trends and Patterns</h2>
+<div class="chart">
+    <div id="streamgraph"></div>
+  
+
+  <div class="text_box">
+    <h4 >Visitor Trends</h4>
+    <p>
+      International tourism in Australia was very strong pre-Covid in 
+      2018-2019, <b>December 2018</b> was the strongest showing in years, with <b>1.06 million</b> tourists arriving, and a strong showing in that summer.
+      <p>Tourism plumetted in Covid, with December 2021 brining in a Million less people than that of 2018, with its peak in <b>June 2022 of 0.28 million.</b>
+      </p>
+      <p>
+        Totals began to rise only in late 2022, with numbers gradually increasing throughout 2023, until finally reaching similar levels in mid 2024.
+      </p>
+      <p>
+        The year of 2024-25 is the first year that numbers are almost identical to pre-covid figures, with <b> 0.95 million visitors in December 2024</b>
+      </p>
+        <p>
+      The strongest month annualy is December, with tourism picking up from November through to February, before it dips to its lowest in early winter, sepcifically
+      in May and June. 
+
+    </p>
+  </div>
+</div>
+<h2 class= "subtitle"> Who are the visitors?</h2>
+<h3 class = "section_heading"> Where are they coming from?</h3>
+
+<div class="chart">
+    <div id="prop_map"></div>
+
+    <div class = "text_box">
+<h4>Visitor Demographics</h4>
+<p>
+    <b>New Zealanders</b> are the most frequent visitors of Australia, with <b>1.2 million</b> vsitors annualy. This is likely due to its proximity,
+    which also leads to these visitors not spending many nights in Australia.
+</p>
+<p>
+Results are similar for <b>South East Asian</b> countries, also frequent visitors who tend to spend fewer nights.
+</p>
+
+<p>
+    Visitors from <b>China and India</b> are also frequent, but they usually have much longer visits.
+</p>
+
+<p>
+    Baring the <b>UK</b> Australia is not a frequent visit for Europeans, likely due to the distance. Visitors from <b>France and Italy</b> ensure they stay for longer, to make the far the distance worth it.
+</p>
+
+<p>
+    <b>Americans and Candians</b> also frequent Australia, but usally do not stay for extended periods.
+</p>
+</div>
+</div>
+
+<h3 class="section_heading">Country Trends over Time</h3>
+<div class="chart">
+    <div class="text_box">
+        <h4>Country Trends</h4>
+        <p>
+          The biggest shift has come from <b>India</b> which increased its visitors by <b>200,000</b> over 10 years. It is now the <b>5th most</b> popular origin country.
+        </p>
+        <p>
+            <b>The USA, New Zealand and South Korea</b> all grew moderately, each by roughly <b>150,000</b> visitors. New Zealand comfortably remains the most frequent visitors of Australia.
+        </p>
+        <p>
+            The next group contains <b>Indonesia, Japan and Signapore</b>, with increases of roughly <b>70,000</b> people. They all retain their 2015 rankings, baring Indonesia who moved up one spot.
+        </p>
+        <p>
+            <b>Hong Kong, China and the UK</b> all had minimal growth, the lowest of them being the UK who only have <b>2,000</b> more visitors in 2025.
+        </p>
+
+    </div>
+    <div id="dumbell"></div>
+</div>
+
+<h3 class = "section_heading">Age and Sex of Visitors</h3>
+<div class="chart">
+    <div class="text_box">
+        <h4>Visitor Demographics</h4>
+        <p>
+            The most popular age of travelers is from <b>20 to 35</b>, peaking in the <b>25-30</b> age bracket with a total of <b>900,000</b> visitors. Girls aged <b>28</b> are the biggest travelers, 
+            having the most visitors at <b>100,000</b>.
+        </p>
+        <p>
+            Visitors decline slightly between <b>35-50</b> but then peak again at the ages of <b>50-65</b>, with visitors between 60 and 65 <b>totalling 650,000</b>.
+        </p>
+        <p>
+            The least common age range is for <b>75 to 95</b> year olds, with thier being very minimal visitors above the age of 85.
+        </p>
+        <p>
+            Children also represent a much smaller number of visitors, with roughly <b>250,000 10 to 15 year olds</b> visiting in 2025. <b>14 year old males</b> have the highest share in this group with <b>28,000</b> visitors.
+        </p>
+
+        <p>
+            Females have more visitors than males across almost all age bands, with younger females heavily outnumbering their male counterparts.
+        </p>
+    </div>
+    <div id ="pop_pyr"></div>
+</div>
+
+<h2 class="subtitle">Why are they Visiting?</h2>
+
+<h3 class="section_heading">Reasons For Visit</h3>
+<div class = "chart">
+
+    <div id="par_plot"></div>
+<div class="text_box">
+    <h4>Visitor Purpose</h4>
+    <p>
+        <b>Holidays</b> are the biggest drivers of all categories, leading <b>Trips (3.2 Million)</b> and <b>Expenditure ($13 billion)</b>.
+    </p>
+    <p>
+        Leading <b>Nights (88 Million)</b> is <b>Visiting Friends/Relatives</b>, also high for trips, but at half of the expenditure at that of holidays.
+    </p>
+    <p>
+        <b>Education</b> is 2nd in <b>Expenditure ($12.8 Billion)</b> but is one of the lowest in <b>Trips (514,000)</b>.
+    </p>
+    <p>
+        High for <b>Nights (47 Million)</b> is <b>Education</b>, with moderate Expenditure but low trips. This follows a similar pattern to Education, having fewer visitors, who end up staying for longer.
+    </p>
+    <p>
+        Both <b>Business and Other</b> are heavily the lowest for <b>Expenditure (sub $2 Billion)</b> and <b>Nights (sub 8 million)</b>. However, Business is relatviely high in number of trips, being the 3rd highest, but still a fair way off the top 2.
+    </p>
+</div>
+</div>
+
+
+<h3 class = "section_heading">Spending Behaviours</h3>
+<div class="chart">
+    <div id="multi"></div>
+
+<div class = "text_and_graph">
+    <div class="text_box_spec">
+       <h4>Country Spending</h4>
+       <p>
+        <b>China</b> are the largest spenders, dwarfing all other countries in <b>Education and Food and Accomodation ($3.9 Billion)</b>. The next highest for either is $1.5 Billion. China also leads <b>Shopping ($986 Million)</b>.
+       </p>
+       <p>
+        The <b>UK and the USA</b> are the leaders in <b>Airfares ($2 Billion)</b> likely due to the travel time. The USA are also leaders in <b>Tours ($1 Billion)</b>.
+       </p>
+       <p>
+        Constantly at the bottom are <b>New Zealand and India</b>. The only time they are not the bottom 3 is India for <b>Education ($456 Million)</b> and New Zealand for <b>Shopping ($417 Million)</b>.
+       </p>
+       <h4>Overall Spending</h4>
+       <p> 
+        <b>Airfares and Food and Acommodation</b> are the clear leaders, comprising <b>60% of overall expenditure</b>.
+        Next is <b>Education ($7.4 Billion)</b>, as seen before it is largely carried by China.
+        <p>
+            <b>Tours, Shopping and Transportation</b> all follow next, taking up between <b>5% and 8%</b> of total spending.
+            <b>Entertainment and Other</b> are the categories which contribute the least, only <b>$3 Billion</b> between them.
+        </p>
+    </p>
+    </div>
+    <div id ="spend"></div>
+    </div>
+</div>
+
+<h3 class = "section_heading">Expenditure by Reason</h3>
+<div class="chart">
+    <div class = "text_box">
+        <h4>Expenditure Purpose</h4>
+        <p>
+            <b>Holidays</b> account for most of the spending across categories, it contributes to 38% plus in most categories, with its highest being <b>Tours(80%)</b> and <b>Entertainment(50%)</b>.
+        </p>
+        <p>
+            Making the next largest contribution is <b>Visiting Someone</b>, with high percentages for <b>Airfares (34.5%)</b> and <b>Shopping (30%)</b>.
+        </p>
+        <p>
+            <b>Education</b> contributes <b>88.5%</b> to Education, but also contributes around 25% to Food and Accomodation and Other.
+        </p>
+        <p>
+            <b>Business and Other</b> are both quite balanced, but overall do not make a large contribution in any specific area. Business has its 
+            largest in <b>Airfares(10.2%)</b> and Others is<b>Other(25.2%)</b>.
+        </p>
+        <p>
+            The most balanaced split categories are <b>Food and Accomodation</b> and <b>Other</b>. The rest of the categories are dominated by one or two reasons. 
+        </p>
+    </div>
+    <div id="heatmap"></div>
+</div>
+
+<h2 class="subtitle">Where Do Visitors Go in Australia</h2>
+<h3 class = "section_heading">Which States Do Visitors Stay in the Longest</h3>
+
+<div class="chart">
+    <div id="chlor_map"></div>
+    <div class="text_box">
+        <h4>State Stay Length</h4>
+        <p>
+        The longest average stays occur in <b>Western Australia</b> and <b>South Australia</b> where trips typically exceed <b>35</b> nights, suggesting these destinations attract longer, more immersive visits. 
+        </p>
+        <p>
+            <b>Victoria</b> and <b>New South Wales</b> follow closely with moderate durations of <b>29</b> and <b>26</b> days, reflecting a balance between leisure and shorter domestic trips. <b>Queensland</b> is closely behind with a <b>24</b> day average stay.
+        </p>
+        <p>
+        In contrast, <b>Northern Territory</b> and <b>Tasmania</b> record some of the shortest average stays, with these states not being major tourist attractions.
+        </p>
+        <p>
+            Overall, the pattern highlights a trend where travelers devote more time to exploring larger, less densely populated regions, while eastern states see shorter, higher-volume travel activity.
+        </p>
+    </div>
+</div>
+
+<h3 class = "section_heading">State Breakdown</h3>
+
+<div class = "charts">
+    <div id="stacked"></div>
+    <div id="bubble"></div>
+    </div>
+    <div class="texts">
+    <div class = "text_box_1">
+        <h4>Regional Breakdown</h4>
+        <p>
+        While cities account for the majority of tourism activity nationwide, the regional breakdown reveals important differences between states.
+        </p>
+        <p>
+            In <b>New South Wales</b> and <b>Victoria</b>, city tourism overwhelmingly dominates but their regional areas still make sizable contributions with <b>1.25 Million Trips</b> and <b>27 Million Nights</b> between them.
+        </p>
+        <p>
+<b>Queenslands</b> tourism is more evenly distributed, with strong city visitation in Brisbane complemented by extensive regional tourism, with it contributing about <b>one third</b> of the states Trips, Nights and Expenditure.
+        </p>
+
+        <p>
+            <b>Tasmania</b> has an even higher split with its Regional areas having more <b>Trips (137,000)</b> comapared to its City <b>(126,000)</b> as well as having <b>$90 Million</b> more Expenditure.
+        </p>
+<p>
+    Conversley, the remaining states have very marginal contributions from their regional areas, with city tourism dominating even more than other states. 
+</p>
+
+    </div>
+    <div class="text_box_2">
+        <h4>State Data</h4>
+        <p>
+            <b>New South Wales</b> dominates Australian tourism volume, leading in <b>Trips(3.8 million)</b> and 
+            <b>Nights(100 million)</b>, underscoring its broad appeal and large population base.
+        </p>
+        <p>
+            <b>Queensland</b> and <b>Victoria</b> follow as major tourism hubs, recording strong performance across all three measures, but with Victoria still exceeding all comfortably.
+        </p>
+
+        <p>
+            In contrast, <b>Western Australia</Audio></b> shows moderate <b>Trips (941,000)</b> but longer stays <b>35 Million Nights</b>, suggesting visitors spend more time per visit due to greater travel distances.
+        </p>
+        <p>
+            Smaller states and territories such as the <b>ACT</b>, <b>Tasmania</b> and the <b>Northern Territory</b> exhibit much lower total volumes, all below <b>250,000 Trips</b> and <b>6 Million Nights</b>.
+        </p>
+        <p>
+            Overall, as expected, there does seem to be a linear correlation between trips, nights and expenditure, with the bigger and eastern states dominating all these measures. 
+        </p>
+    </div>
+    </div>
+<div class = "conclusion">
+    Data created by Joshua Kupshik on 17/10/2025. Data was sourced from <a href="https://www.abs.gov.au/articles/overseas-arrivals-and-departures-australia-2024-25-financial-year">ABS</a> and <a href="https://www.tra.gov.au/en/international/international-tourism-results">Tourism Research Australia </a>.
+
+</div>
+
+
+</body>
+</html>

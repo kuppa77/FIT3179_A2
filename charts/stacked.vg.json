@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Tourism Metrics by State and Region (2025)",
+  "width": 530,
+  "height": 400,
+  "data": 
+  {"url": "../data/state_reg.csv"},
+  "transform": [
+    {
+      "calculate": "indexof(lower(datum.Region), 'regional') > -1 ? 'Regional' : 'City'",
+      "as": "AreaType"
+    },
+    {
+      "fold": ["Trips (000)", "Nights (000)", "Regional Expenditure ($M)"],
+      "as": ["Metric", "Value"]
+    },
+    {"filter": "datum.Metric == metric"},
+    {"filter": {"selection": "leg_filt"}}
+  ],
+
+  "params": [
+    {
+      "name": "metric",
+      "value": "Nights (000)",
+      "bind": {
+        "input": "select",
+        "options": ["Trips (000)", "Nights (000)", "Regional Expenditure ($M)"],
+        "labels": ["Trips", "Nights", "Expenditure"],
+        "name": "Select Metric: "
+      }
+    }
+  ],
+
+  "selection": {
+    "hover_highlight": {
+    "type": "point",
+    "fields": ["AreaType"],
+    "on": "mouseover",
+    "clear": "mouseout"
+  },
+  "leg_filt": {
+    "type": "multi",
+    "fields": ["AreaType"],
+    "bind": "legend"
+  }
+},
+
+  "mark": "bar",
+
+  "encoding": {
+    "x": {
+        "field": "State", 
+        "type": "nominal",
+        "sort": "-y"
+        
+    },
+    "y": {
+        "field": "Value", 
+        "type": "quantitative"
+    
+    },
+    "color": {
+      "field": "AreaType",
+      "type": "nominal",
+      "title": "Area Type",
+      "sort": "x",
+      "scale": {"domain": ["City", "Regional"], "scheme": "tealblues"},
+      "legend": {
+        "titleFontSize": 16,
+        "labelFontSize": 14
+      }
+    },
+    "opacity": {
+    "condition": 
+    {"selection": "hover_highlight", 
+    "value": 0.9
+    },
+    "value": 0.2
+  },
+    "tooltip": [
+      {"field": "State"},
+      {"field": "Region"},
+      {"field": "AreaType"},
+      {"field": "Value", "title": "Metric", "format": ","}
+    ]
+  
+},
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 20,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        }
+    }
+}
+

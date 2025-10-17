@@ -1,0 +1,46 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+     "title": "Expenditure by Country",
+     "data": {
+        "url": "../data/country_exp.csv"
+     },
+     "transform": [
+        {"fold": [
+            "China",
+      "United States of America",
+      "United Kingdom",
+      "New Zealand",
+      "India",
+      "Other"
+    ], "as": ["Country", "spend"]}
+     ],
+     
+     "mark":"bar",
+     "encoding": {
+        "x": {
+            "field": "Expenditure ($M)",
+            "type": "nominal",
+            "axis": {
+                "labelAngle": 0
+            }
+        },
+        "y": {
+            "field": "spend",
+            "type": "quantitative"
+        },
+        "xOffset": {
+            "field": "Country",
+            "type": "nominal"
+        },
+        "color": {
+            "field": "Country"
+        },
+        "tooltip": [
+      { "field": "Expenditure ($M)", "title": "Category" },
+      { "field": "Country" },
+      { "field": "spend", "title": "Expenditure ($M)", "format": "," }
+    ]
+     }
+
+
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 400,
+  "title": "Visitors by Age and Sex",
+  "data": {"url": "../data/age_sex.csv"},
+  "transform": [
+    {"bin": {"step": 5}, 
+    "field": "Age", 
+    "as": "AgeGroup"},
+    {"calculate": "-datum['Male']", "as": "Male"},
+    {
+      "fold": ["Male", "Female"],
+      "as": ["Gender", "Population"]
+    },
+    {"calculate": "abs(datum.Population)", "as": "PopulationAbs"},
+    {"filter": "GenderSelect == null || datum.Gender == GenderSelect"},
+    {"filter": "datum.Age > Age_Above"},
+    {"filter": "datum.Age < Age_Below"}
+
+  ],
+  "params": [
+    {
+      "name": "GenderSelect",
+      "bind": {
+        "input": "select", 
+        "options": [
+         null, 
+        "Male", 
+        "Female"
+    ], 
+      "labels": [
+    "All", 
+      "Male", 
+      "Female"
+    ],
+        "name": "Gender Selection"}
+    },
+    {
+"name": "Age_Above",
+"value": 0,
+"bind": {
+"input": "range",
+"min": 0,
+"max": 100,
+"step": 10,
+"name": "Minimum Age: "
+}
+},
+  {
+"name": "Age_Below",
+"value": 100,
+"bind": {
+"input": "range",
+"min": 0,
+"max": 100,
+"step": 10,
+"name": "Max Age: "
+}
+}
+  ],
+  "layer": [
+    {
+
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Population",
+      "type": "quantitative",
+      "title": "Visitors (000s)",
+       "axis": {"labelExpr": "abs(datum.value)", "tickCount": 12 }
+    },
+    "y": {
+      "field": "AgeGroup",
+      "type": "ordinal",
+      "sort": "descending",
+      "title": "Age Group"
+    },
+    
+    "color": {
+      "field": "Gender",
+      "type": "nominal",
+      "scale": {"scheme": "tealblues"},
+      "legend": {
+        "title": "Gender",
+         "labelFontSize":14, 
+          "titleFontSize": 16
+      }
+    },
+    "tooltip": [
+      {"field": "AgeGroup", "title": "Age Group"},
+      {"field": "Age"},
+      {"field": "Gender"},
+      {"field": "PopulationAbs", "type": "quantitative", "title": "Population (000)", "format":".2f"}
+    ]
+  }
+},
+{
+  "mark": { 
+    "type": "text",
+    "x": 600,
+    "y": 350,
+    "fontSize": 13,
+    "font": "Roboto, sans-serif",
+    "fontWeight":"bold",
+  "color": "grey"},
+   "transform": [
+    {"filter": "GenderSelect == null || GenderSelect == 'All'"},
+    {"filter": "Age_Above <= 1"},
+    {"filter": "Age_Below >= 99"}
+  ],
+    "encoding": {
+      "text": {
+        "value": "Most Visitors are aged 25-30"
+      }
+    }
+
+},
+{
+  "mark": { 
+    "type": "text",
+    "x": 580,
+    "y": 100,
+    "fontSize": 13,
+    "font": "Roboto, sans-serif",
+    "fontWeight":"bold",
+  "color": "grey"},
+  "transform": [
+    {"filter": "GenderSelect == null || GenderSelect == 'All'"},
+    {"filter": "Age_Above <= 1"},
+    {"filter": "Age_Below >= 99"}
+  ],
+    "encoding": {
+      "text": {
+        "value": "Visitors decline heavily in ages 70-75"
+      }
+    }
+},
+{
+  "mark": { 
+    "type": "text",
+    "x": 150,
+    "y": 60,
+    "fontSize": 13,
+    "font": "Roboto, sans-serif",
+    "fontWeight":"bold",
+  "color": "grey"},
+  "transform": [
+    {"filter": "GenderSelect == null || GenderSelect == 'All'"},
+    {"filter": "Age_Above <= 1"},
+    {"filter": "Age_Below >= 99"}
+  ],
+    "encoding": {
+      "text": {
+        "value": "Males travel less than females"
+      }
+    }
+}
+],
+"config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15
+        }
+    }
+}

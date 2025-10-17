@@ -1,0 +1,16 @@
+State,Region,Trips (000),Nights (000),Regional Expenditure ($M)
+New South Wales,Sydney,3606,84568,12713
+New South Wales,Regional NSW,743,17274,1216
+Victoria,Melbourne,2614,70514,8950
+Victoria,Regional VIC,468,10540,832
+Queensland,Brisbane and the Gold Coast,1667,35379,4566
+Queensland,Regional QLD,957,16696,2348
+South Australia,Adelaide,401,12626,1463
+South Australia,Regional SA,128,2607,247
+Western Australia,Perth,891,30366,3041
+Western Australia,Regional WA,231,5453,419
+Tasmania,Hobart,221,2543,467
+Tasmania,Regional TAS,125,1885,182
+Northern Territory,Darwin,126,3033,199
+Northern Territory,Regional NT,137,1066,289
+ACT,Canberra,217,5765,599

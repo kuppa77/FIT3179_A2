@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Travelling Trends from 2018 to 2025",
+  "width": 1000,
+  "height": 350,
+  "data": {"url": "../data/month_years.csv"},
+  "transform": [
+    {
+      "fold": ["2018-19", "2021-22", "2022-23", "2023-24", "2024-25"],
+      "as": ["Year", "Value"]
+    }
+  ],
+   "selection": {
+    "year_highlight": {
+      "type": "multi",
+      "fields": ["Year"],
+      "bind": "legend" 
+    }
+   },
+  "mark": {"type": "area", "interpolate": "basis"},
+  "encoding": {
+    "x": {
+      "field": "Month",
+      "type": "ordinal",
+      "sort": [
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun"
+  ],
+      "axis": {"labelAngle": 0, "title": null}
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "stack": "center",
+      "title": "Visitors (Millions)"
+    },
+    "color": {
+      "field": "Year",
+      "type": "nominal",
+      "scale": {"scheme": "blues"},
+      "legend": {
+      "orient": "bottom", 
+      "labelFontSize":14, 
+      "titleFontSize": 16  
+    }
+    },
+    "opacity":{
+      "condition": 
+    {"selection": "year_highlight", 
+    "value": 0.8
+    },
+    "value": 0.2
+    },
+    "tooltip": [
+      {"field": "Month", "type": "ordinal"},
+      {"field": "Year", "type": "nominal"},
+      {
+        "field": "Value",
+        "type": "quantitative",
+        "title": "Visitors (M)",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        }
+    }
+}

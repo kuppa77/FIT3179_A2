@@ -1,0 +1,27 @@
+Country,Trips (000),Nights (1000),Spend in Australia ($M)
+New Zealand,"1,258","14,632","2,487"
+Japan,361,"13,236","1,496"
+Hong Kong,203,"5,369",986
+Singapore,363,"5,838","1,287"
+Malaysia,180,"4,716",684
+Indonesia,204,"9,642","1,070"
+Taiwan,154,"8,884",879
+Thailand,88,"5,783",429
+Vietnam,153,"7,782",838
+Philippines,167,"10,271",604
+Korea,341,"10,459","1,538"
+China,892,"50,520","9,802"
+India,429,"29,488","1,926"
+Other Asia,206,"16,880","1,306"
+United States of America,669,"11,557","2,462"
+Canada,156,"4,829",679
+United Kingdom,633,"23,729","2,619"
+Germany,162,"5,911",701
+Scandinavia,82,"3,226",337
+France,125,"9,292",809
+Italy,66,"5,026",423
+Netherlands,49,"1,650",227
+Switzerland,41,"1,606",261
+Other Europe,268,"13,543","1,410"
+Other Countries,512,"27,232","2,270"
+Total,"7,765","301,100","37,531"

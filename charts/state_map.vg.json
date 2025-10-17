@@ -1,0 +1,81 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"title": "How Long Do Travelers Spend in Australian States",
+"width": 800,
+"height": 380,
+"projection": {"type": "conicEqualArea",
+    "center": [134, -25],
+  "parallels": [-18, -36],
+  "rotate":[-134,0,0]
+},
+"layer": [
+    {"data": {
+        "graticule": {
+            "step": [5,5],
+            "extent": [[110, -45], [155, -10]]
+        }
+    },
+    "mark": {
+        "type": "geoshape",
+        "stroke": "#d1d1d1",
+        "strokeWidth": 0.5
+      }
+    },
+
+{
+"data": { 
+    "url": "../data/aus_states.json",
+    "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA94" }
+},
+"transform": [
+    {
+        "lookup": "properties.STE_NAME21",
+        "from": {
+            "data": {
+                "url": "../data/State_trips_nights.csv"
+            },
+            "key": "State",
+            "fields": ["Expenditure ($M)", "Trips (000s)", "Nights (000s)"]
+        }
+    },
+    {"calculate": "datum['Nights (000s)'] / datum['Trips (000s)']", "as": "Avg Nights per Trip"}
+],
+
+"mark": {"type": "geoshape","stroke": "#FFFFFF", "strokeWidth": 0.8},
+"encoding": {
+    "color": {
+        "field": "Avg Nights per Trip",
+        "type": "quantitative",
+        "scale": {"scheme": "tealblues"},
+        "legend": {
+            "titleFontSize": 16,
+            "labelFontSize": 14
+        }
+    },
+    "tooltip": [
+        {"field": "properties.STE_NAME21", "title": "State"},
+        {"field": "Avg Nights per Trip", "format":".2f"  },
+        {"field": "Trips (000s)", "format": ","},
+      {"field": "Nights (000s)", "format": ","}
+    ]
+}
+}
+],
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        },
+        "view": {"stroke": "transparent"}
+    }
+}

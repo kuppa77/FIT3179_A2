@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Tourism Expenditure in Australia by Activity and Country",
+  "data": {"url": "../data/country_exp.csv"},
+  "transform": [
+    {
+      "fold": [
+        "China",
+        "United States of America",
+        "United Kingdom",
+        "New Zealand",
+        "India",
+        "Other"
+      ],
+      "as": ["Country", "Value"]
+    }
+  ],
+  "facet": {
+    "field": "Expenditure ($M)",
+    "type": "nominal",
+    "title": "Activity Category"
+  },
+  "columns": 4,
+
+  "spec": {
+    "selection": {
+      "country_highlight": {
+        "type": "multi",
+        "fields": ["Country"],
+        "bind": "legend"
+      }
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Country", 
+        "type": "nominal", 
+        "title": null
+      },
+      "y": {
+        "field": "Value", 
+        "type": "quantitative", 
+        "title": "Expenditure ($M)"
+      },
+      "color": {
+        "condition": {
+      
+          "selection": "country_highlight",
+          "field": "Country",
+          "type": "nominal"
+        },
+        "value": "lightgray",
+        "legend": {
+          "orient": "bottom", 
+          "title": "Country",
+          "titleFontSize": 18,
+          "labelFontSize":20
+        }
+      },
+      "tooltip": [
+        {"field": "Expenditure ($M)", "title": "Activity"},
+        {"field": "Country"},
+        {"field": "Value", "title": "Expenditure ($M)", "format": ","}
+      ]
+    }
+  },
+
+  
+  "config": {
+    "facet": {"spacing": 20},
+    "view": {"stroke": null},
+    
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 12,
+            "titleFontSize": 15,
+            "domain": false
+        },
+        "legend": {
+          "titleFontSize": 16,
+          "labelFontSize": 14
+        }
+    }
+
+  }
+
