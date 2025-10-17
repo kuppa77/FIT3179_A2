@@ -1,0 +1,103 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Australain Visitor Growth by Country (2015 vs 2025)",
+  "width": 800,
+  "height": 320,
+  "data": {"url": "../data/country_years.csv"},
+  "transform": [
+    {"filter": "datum['Country of residence'] != 'All countries'"},
+    {"fold": ["2014-15", "2024-25"], "as": ["Year", "Visitors (000)"]}
+  ],
+  "encoding": {
+    "x": {
+        "field": "Visitors (000)",
+        "type": "quantitative"
+    },
+    "y":{
+        "field": "Country",
+        "type": "nominal",
+        "title": "Country"
+    }
+    
+  },
+  "layer": [
+    {
+        "mark": "line",
+        "encoding": {
+            "detail": {
+                "field": "Country",
+                "type": "nominal"
+            },
+            "color": {
+                "scale": {"scheme": "tealblues"}
+            }
+        }
+    },
+    {
+        "mark": {
+            "type": "point",
+            "filled": true
+        },
+        "encoding": {
+            "color":{
+                "field": "Year",
+                "type": "ordinal",
+                "scale": {
+                    "domain": ["2014-15", "2024-25"],
+                    "scheme": "tealblues"
+                },
+                "title": "Year",
+                "legend": {
+                    "labelFontSize": 14,
+                    "titleFontSize": 16
+                }
+                
+            },
+            "size": {"value": 100},
+            "opacity": {"value":1},
+            "tooltip": [
+                {"field": "Country", "type": "nominal"},
+                {"field": "Year", "type": "ordinal"},
+                {"field": "Visitors (000)", "type": "quantitative"}
+            ]
+        }
+    },
+    {
+      "data": {
+        "values": [
+          {"Country": "India", "Visitors (000)": 650, "label": "India had the largest growth"},
+          {"Country": "South Korea", "Visitors (000)": 700, "label": "South Korea and the USA grew substantially"},
+          {"Country": "Hong Kong", "Visitors (000)": 1100, "label":"China, Hong Kong and the UK had little growth" }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "color": "grey",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"field": "Visitors (000)", "type": "quantitative"},
+        "y": {"field": "Country", "type": "nominal"},
+        "text": {"field": "label"}
+      }
+    }
+  ],
+  
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        }
+    }
+    }

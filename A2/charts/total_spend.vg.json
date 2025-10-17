@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Tourism Expenditure by Category (2025)",
+  "width": 490,
+  "height": 270,
+  "data": {
+    "url": "../data/spend_totals.csv"
+
+  },
+  "transform": [
+  {
+    "joinaggregate": [{"op": "sum", "field": "Total", "as": "TotalSum"}]
+  },
+  {
+    "calculate": "(datum.Total / datum.TotalSum)",
+    "as": "Percentage"
+  }
+],
+
+   "selection": {
+    "spend_highlight": {
+    "type": "multi",
+    "fields": ["Category"],
+    "bind": "legend"
+}
+   },
+  "mark": {"type": "arc", "innerRadius": 60},
+  "encoding": {
+     "theta": {
+        "field": "Total",
+        "type": "quantitative"
+     },
+    "color":{
+      "field": "Category",
+      "type": "nominal",
+      "scale": {"scheme": "blues"},
+      "legend": {
+        "titleFontSize": 16,
+        "labelFontSize": 14
+      }
+    },
+    "opacity": {
+    "condition": 
+    {"selection": "spend_highlight", 
+    "value": 0.9
+    },
+    "value": 0.2
+  },
+    "tooltip": [
+      {"field": "Category", "title": "Category"},
+      {"field": "Total", "title": "Expenditure ($M)", "format": ","},
+      {"field": "Percentage", "format": ".2%"}
+    ]
+  },
+    "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        },
+        "view": {"stroke": "transparent"}
+    }
+}

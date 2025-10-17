@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Spending, Trip Length and Frequency by Reason",
+  "width": 720,
+  "height": 350,
+  "data": {"url": "../data/reasons.csv"},
+  "transform": [
+    {"fold": ["Trips (000s)", "Nights (000s)", "Expenditure ($M)"],
+     "as": ["field", "ValueRaw"]
+    },
+    {"calculate": "toNumber(datum.ValueRaw)", "as": "Value"},
+    {
+      "joinaggregate": [{"op": "max", "field": "Value", "as": "max"}],
+      "groupby": ["field"]
+    },
+    {"calculate": "datum.Value / datum.max", "as": "Normalised"}
+  ],
+    "selection": {
+    "reason_highlight": {
+    "type": "multi",
+    "fields": ["Reason"],
+    "bind": "legend"
+}
+},
+  "mark": {"type": "line"},
+  "encoding": {
+    "x": {
+          "field": "field", 
+          "type": "nominal", 
+          "axis": {"labelAngle": 0, "title": null}
+        },
+    "y": {
+      "field": "Normalised",
+      "type": "quantitative",
+      "axis": {"title": "Normalised (0-1)"}
+    },
+    "color": {
+      "field": "Reason", 
+      "type": "nominal", 
+      "title": "Reason for Travel",
+      "legend":{
+        "labelFontSize": 14,
+        "titleFontSize": 16
+      }
+    },
+    "opacity": {
+    "condition": 
+    {"selection": "reason_highlight", 
+    "value": 0.9
+    },
+    "value": 0.2
+  },
+
+    "tooltip": [
+      {"field": "Reason"},
+      {"field": "field"},
+      {"field": "Value", "title": "Value", "format": ","},
+      {"field": "Normalised", "format": ".2f"}
+    ]
+  },
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        }
+    }
+}

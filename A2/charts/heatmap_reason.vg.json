@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Travel Expenditure Breakdown by Reason (as % of Category Total)",
+  "width": 530,
+  "height": 350,
+  "data": {
+    "url": "../data/exp_reason.csv"
+  },
+  "transform": [
+    {"fold": [
+      "Holiday",
+      "Visiting someone",
+      "Business",
+      "Education",
+      "Other"
+    ], "as": ["reason", "Value"]},
+    {"calculate": "datum.Value / datum.Total", "as": "proportion"}
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x":{
+        "field":"reason",
+        "type": "nominal",
+        "title": "Reason for Travel",
+        "axis": {"labelAngle": 0}
+    },
+    "y":{
+        "field": "Expenditure ($M)",
+        "type": "nominal",
+        "title": "Expenditure Category"
+
+    },
+    "color":{
+    "field": "proportion",
+    "type": "quantitative",
+    "title": "% of Category Total",
+    "legend": {
+  "title": "% of Category Total",
+  "format": ".0%",
+  "values": [0.03, 0.1, 0.25, 0.4, 0.8],
+  "titleFontSize": 16,
+  "labelFontSize": 14
+},
+    "scale": {"scheme": "tealblues","type": "log"}
+    },
+    "tooltip": [
+      {"field": "Expenditure ($M)", "title": "Category"},
+      {"field": "reason", "title": "Travel Reason"},
+      {"field": "Value", "title": "Expenditure ($M)", "format": ","},
+      {"field": "proportion", "title": "% of Category", "format": ".1%"}
+    ]
+  },
+    "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "domain": false
+        }
+    }
+}

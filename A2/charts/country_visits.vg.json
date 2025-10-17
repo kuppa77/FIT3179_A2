@@ -1,0 +1,127 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Location, Length and Frequency of Visits",
+  "width": 900,
+  "height": 400,
+  "params": [
+    {
+      "name": "zoom_level",
+      "value": 130,
+      "bind": {"input": "range", 
+                "min": 100, 
+                "max": 600, 
+                "step": 10, 
+                "name": "Zoom: "}
+              },
+    {
+      "name": "center_to",
+      "value": [0, 0],
+      "bind": {
+        "input": "select",
+        "options": [[135, -25], [100, 30], [10,45], [0, 0]],
+        "labels": ["Australia", "Asia", "Europe", "World"],
+        "name": "Map Center: "
+      }
+    }
+  ],
+
+  "projection": {
+    "type": "naturalEarth1",
+    "center": {"expr": "center_to"},
+    "scale": {"expr": "zoom_level"}
+  },
+
+  "layer": [
+    {
+      
+      "data": {"graticule": {"step": [10, 10]}},
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#d1d1d1",
+        "strokeWidth": 0.4
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {"url": "../data/Country_visits.csv"},
+      "transform": [
+        {"calculate": "datum['Nights (000)'] / datum['Trips (000)']", "as": "Nights per Trip"}
+      ],
+
+      "mark": 
+      {"type": "circle", "stroke": "white", "strokeWidth": 0.7},
+      "encoding": {
+        "longitude": 
+        {"field": "longitude", 
+        "type": "quantitative"
+      },
+        "latitude": 
+        {"field": "latitude", 
+        "type": "quantitative"
+      },
+        "size": 
+        {"field": "Trips (000)", 
+        "type": "quantitative", 
+        "title": "Number of Trips (000)",
+        "legend": {
+          "labelFontSize":14, 
+          "titleFontSize": 16
+        }
+      },
+        "color": {
+          "field": "Nights per Trip",
+          "type": "quantitative",
+          "title": "Average Nights per Trip",
+          "scale": {"scheme": "tealblues"},
+          "legend": {
+            "labelFontSize":14, 
+            "titleFontSize": 16
+          }
+        },
+        "tooltip": [
+          {"field": "Country"},
+          {"field": "Trips (000)", "format": ","},
+          {"field": "Nights per Trip", "format": ".2f"},
+          {"field": "Spend in Australia ($M)", "format": ","}
+        ]
+      }
+    },
+    {
+  "mark": {
+    "type": "text",
+    "color": "gray",
+    "fontSize": 11
+  },
+  "encoding": {
+    "longitude": {"datum": 175},
+    "latitude": {"datum": -40},
+    "text": {"datum": "New Zealand has the most frequent visitors"}
+  }
+}
+
+      
+  ],
+  "config": {
+        "background": "#F4F9FB",
+        "font": "Roboto, sans-serif",
+        "title": {
+          "color": "#1A237E",
+          "fontSize": 22,
+          "anchor":"middle"
+        },
+        "axis": {
+            "titleColor": "#527298",
+            "labelColor": "#527298",
+            "labelFontSize": 15,
+            "titleFontSize": 15
+        }
+    },
+    "view": {"stroke": "transparent"}
+}

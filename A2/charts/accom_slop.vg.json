@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Nights Spent at Types of Accommodation",
+  "data": {"url": "../data/accom_type.csv"},
+  "width": 350,
+  "height": 350,
+  "transform": [
+  { "calculate": "toNumber(datum['2025 (000s)'])", "as": "2025 (000s)" }
+]
+,
+  "layer": [
+  {
+    "mark": "bar",
+  "encoding": {
+   
+    "x": {
+      "field": "2025 (000s)",
+      "type": "quantitative",
+      "title": "Nights (000s)"
+    },
+     "y": {
+      "field": "Type",
+      "type": "nominal",
+      "title": "Accommodation Type",
+      "sort": {"field": "2025 (000s)", "order": "descending"}
+
+        },
+    "color": {
+      "field": "2025 (000s)", 
+      "type": "quantitative", 
+      "title": "Nights (000s)",
+      "scale": {"scheme": "tealblues", "type": "log"}
+    },
+    "tooltip": [
+      {"field": "Type"},
+      {"field": "2025 (000s)", "format": ",", "title": "Nights (000s)"},
+      {"field": "2025 Proportion (%)", "format": ".1f", "title": "Proportion (%)"}
+    ]
+  }
+},
+  {
+  "mark": {
+    "type": "text",
+    "x": 200,
+    "y": 130,
+    "text": "Most nights are spent in rented or friends' properties",
+    "fontSize": 11,
+    "color": "gray"
+  }
+},
+{
+  "mark": {
+    "type": "text",
+  "x": 180,
+  "y": 290,
+  "text": "Caravans and camping are not popular",
+  "fontSize": 11,
+  "color": "gray"
+  }}
+  ]
+}

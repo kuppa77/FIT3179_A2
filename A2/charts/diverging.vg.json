@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "% Change in Nights by Accommodation Type (2024 → 2025)",
+  "data": {"url": "accom_type.csv"},
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "Type", "type": "nominal", "sort": "x"},
+    "x": {
+      "field": "% change between year ending",
+      "type": "quantitative",
+      "title": "% Change"
+    },
+    "color": {
+      "condition": {"test": "datum['% change between year ending'] > 0", "value": "#2ca02c"},
+      "value": "#d62728"
+    },
+    "tooltip": [
+      {"field": "Type"},
+      {"field": "% change between year ending", "title": "% Change", "format": ".1f"}
+    ]
+  }
+}

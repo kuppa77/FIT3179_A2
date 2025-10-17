@@ -1,0 +1,134 @@
+body {
+    background-color: #f4f9fb;
+    font-family: 'Roboto', sans-serif;
+}
+
+ h1 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #004d60;  
+  font-size: 48px;           
+  background-color: #e0f7fa;  
+  padding: 25px;
+  margin: 10px 7px 0px 7px;          
+}
+
+.subtitle{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #1a3c57;
+    font-size: 35px;
+    background-color: #e3f2fd;     
+    padding: 25px;
+    margin: 10px 7px 5px 7px;
+    
+}
+
+.section_heading {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #1a3c57;
+    font-size: 22px ;
+    background-color: #e0f4f1;
+    padding: 20px;
+    margin: 10px 7px 5px 7px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-start;   
+  gap: 10px;                 
+  margin: 20px 0;
+}
+
+
+.text_box {
+  background-color:  #E8F4F5;
+  padding: 15px 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #37474F;
+  margin-right: 12px;
+  margin-left: 12px;
+  
+}
+
+.text_box_spec {
+  background-color:  #E8F4F5;
+  font-size: 13px;
+  padding: 15px 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #37474F;
+  margin-right: 12px;
+  margin-left: 12px;
+  
+}
+
+.text_box_1 {
+  background-color:  #E8F4F5;
+  padding: 15px 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #37474F;
+  margin-right: 12px;
+  margin-left: 85px;
+  width: 820px;
+  margin-top: 12px;
+  
+}
+
+.text_box_2 {
+  background-color:  #E8F4F5;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #37474F;
+  margin-right: 120px;
+  margin-left: 12px;
+  width: 850px;
+  
+}
+
+.conclusion {
+  background-color:  #E8F4F5;
+  margin-top: 20px;
+  font-size: 13px;
+  padding: 15px 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #37474F;
+  margin-right: 12px;
+  margin-left: 12px;
+  
+}
+.charts {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.texts {
+    display: flex;
+    gap: 100px;
+    align-items: flex-start;
+}
+
+#prop_map {
+    margin-left: 20px;
+}
+
+#stacked {
+    margin-left: 15px;
+}
+
+
+#pop_pyr {
+  display: flex; 
+}
+
+#pop_pyr .vega-bindings {
+  margin-left: 15px;
+  margin-top: 25px;
+  margin-right: 10px;
+}
+
+#spend {
+    margin-top: 40px;
+}
